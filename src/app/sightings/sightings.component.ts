@@ -8,6 +8,9 @@ import {HttpClient} from '@angular/common/http';
 })
 export class SightingsComponent implements OnInit {
   ln;
+  results: Sighting[] = [];
+  tmp: Sighting;
+
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
@@ -17,8 +20,18 @@ export class SightingsComponent implements OnInit {
 
         for (let i = 0; i < this.ln; i++) {
 
-          console.log(resp.body[i]);
+          // console.log(resp.body[i].species);
+          this.tmp = new Sighting(resp.body[i].id,
+                                  resp.body[i].dateTime,
+                                  resp.body[i].description,
+                                  resp.body[i].species,
+                                  resp.body[i].count);
+          this.results.push(this.tmp);
+
+         // console.log(this.results.length)
         }
+
+        console.log(this.results[3].getDescription);
 
       });
   }
@@ -33,9 +46,30 @@ interface SightingsData {
 }
 
 export class Sighting {
-  id: number;
-  dateTime: string;
-  description: string;
-  species: string;
-  count: number;
+
+  constructor(private id: number,
+    private dateTime: string,
+    private description: string,
+    private species: string,
+    private count: number) {}
+
+  get getId(): number {
+    return this.id;
+  }
+
+  get getDateTime(): string {
+    return this.dateTime;
+  }
+
+  get getDescription(): string {
+    return this.description;
+  }
+
+  get getSpecies(): string {
+    return this.species;
+  }
+
+  get getCount(): number {
+    return this.count;
+  }
 }
