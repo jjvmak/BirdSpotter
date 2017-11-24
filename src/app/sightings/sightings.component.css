@@ -1,3 +1,10 @@
 p {
 	color: white;	
+	line-height: 100%;
+}
+
+.sighting {
+	background-color: #686096;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }

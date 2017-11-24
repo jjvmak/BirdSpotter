@@ -1,10 +1,18 @@
-<div *ngFor="let result of results">
+<div class="container-fluid" >
+
+	<button class="btn btn-default">Uusimmat ensin</button>
+	<button class="btn btn-default">Vanhimmat ensin</button>
+
+
+<div class="sighting" *ngFor="let result of results">
 
 	<p>ID: {{result.id}}</p>
 	<p>DATE: {{result.dateTime}}</p>
 	<p>DESCRIPTION: {{result.description}}</p>
 	<p>SPECIES: {{result.species}}</p>
 	<p>COUNT: {{result.count}}</p>
-	<hr>
+	
+
+</div>
 
 </div>
