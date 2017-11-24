@@ -1,7 +1,7 @@
 <div class="container-fluid" >
 
-	<button class="btn btn-default">Uusimmat ensin</button>
-	<button class="btn btn-default">Vanhimmat ensin</button>
+	<button (click)="sortNewFirst()" class="btn btn-default">Uusimmat ensin</button>
+	<button (click)="sortOldFirst()" class="btn btn-default">Vanhimmat ensin</button>
 
 
 <div class="sighting" *ngFor="let result of results">

@@ -45,7 +45,7 @@ export class SightingsComponent implements OnInit {
           this.results.push(this.tmp);
           
           
-          this.sort();
+          
 
         }
 
@@ -54,11 +54,25 @@ export class SightingsComponent implements OnInit {
     
   }
 
-  sort() {
+  sortOldFirst() {
     console.log('sorting')
     for (let i = 0; i < this.results.length; i++) {
       for (let j = i; j > 0; j--) {
         if (this.results[j].getCalculated < this.results[j - 1].getCalculated) {
+          let tmp = this.results[j];
+          this.results[j] = this.results[j - 1];
+          this.results[j - 1] = tmp;
+        }
+      }
+    }
+  }
+
+
+  sortNewFirst() {
+    console.log('sorting')
+    for (let i = 0; i < this.results.length; i++) {
+      for (let j = i; j > 0; j--) {
+        if (this.results[j].getCalculated > this.results[j - 1].getCalculated) {
           let tmp = this.results[j];
           this.results[j] = this.results[j - 1];
           this.results[j - 1] = tmp;
