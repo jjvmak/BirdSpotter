@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {enableProdMode} from '@angular/core';
+enableProdMode();
 
 @Component({
   selector: 'app-sightings',
@@ -33,7 +35,7 @@ export class SightingsComponent implements OnInit {
           calculated = (calculated / 30) + mm;
           calculated = (calculated / 12) + yy;
           
-          console.log(calculated)
+         // console.log(calculated)
           
 
           this.tmp = new Sighting(resp.body[i].id,
@@ -55,7 +57,7 @@ export class SightingsComponent implements OnInit {
   }
 
   sortOldFirst() {
-    console.log('sorting')
+   // console.log('sorting')
     for (let i = 0; i < this.results.length; i++) {
       for (let j = i; j > 0; j--) {
         if (this.results[j].getCalculated < this.results[j - 1].getCalculated) {
@@ -69,7 +71,7 @@ export class SightingsComponent implements OnInit {
 
 
   sortNewFirst() {
-    console.log('sorting')
+   // console.log('sorting')
     for (let i = 0; i < this.results.length; i++) {
       for (let j = i; j > 0; j--) {
         if (this.results[j].getCalculated > this.results[j - 1].getCalculated) {

@@ -1,15 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-
+import {HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.css']
 })
 export class InputComponent implements OnInit {
+  
+  id: number;
+  dateTime: string;
+  description: string;
+  species: string;
+  count: number;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+//    const body = {id: 55,
+//                  dateTime: '2018-12-12T10:10:00Z',
+//                  description: 'testi',
+//                  species: 'gadwall',
+//                  count: 1  };
+//    this.http.post('http://localhost:8020/sightings', body).subscribe(); 
   }
 
 }
+
+
