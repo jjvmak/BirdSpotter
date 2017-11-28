@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { AbstractControl, ValidatorFn, NgForm } from '@angular/forms';
+import { AbstractControl, ValidatorFn, NgForm, FormGroup, Validators, FormControl, NgModel} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
@@ -13,6 +15,8 @@ export class InputComponent implements OnInit {
   description: string;
   species: string;
   count: number;
+  
+  form;
 
   constructor(private http: HttpClient) { }
 
@@ -23,9 +27,12 @@ export class InputComponent implements OnInit {
 //                  species: 'gadwall',
 //                  count: 1  };
 //    this.http.post('http://localhost:8020/sightings', body).subscribe(); 
+    
+   
   }
   
   onSubmit(form: NgForm) {
+    console.log(form);
     this.id = form.value.id;
     this.dateTime = form.value.dateTime;
     this.description = form.value.description;
