@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { AbstractControl, ValidatorFn, NgForm, FormGroup, Validators, FormControl, NgModel} from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./input.component.css']
 })
 export class InputComponent implements OnInit {
-  
+  @ViewChild('sighting') sightingForm: NgForm;
   id: number;
   dateTime: string;
   description: string;
@@ -26,17 +26,14 @@ export class InputComponent implements OnInit {
    
   }
   
-  onSubmit(form: NgForm) {
-    console.log(form);
-    this.id = form.value.id;
-    this.dateTime = form.value.dateTime;
-    this.description = form.value.description;
-    this.species = form.value.species;
-    this.count =  form.value.count;
+  onSubmit() {
+    this.id = this.sightingForm.value.id;
+    this.dateTime = this.sightingForm.value.dateTime;
+    this.description = this.sightingForm.value.description;
+    this.species = this.sightingForm.value.species;
+    this.count =  this.sightingForm.value.count;
     
-    console.log('das: ' + this.id + this.dateTime + this.description + this.species + this.count);
-    
-    const body = {
+     const body = {
       id: this.id,
       dateTime: this.dateTime,
       description: this.description,
@@ -44,7 +41,9 @@ export class InputComponent implements OnInit {
       count: 1
     };
     this.http.post('http://localhost:8020/sightings', body).subscribe(); 
+    
+    this.sightingForm.reset();
   }
-
+  
 }
 
