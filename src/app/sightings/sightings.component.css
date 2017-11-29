@@ -6,6 +6,8 @@ p {
 	font-weight: 400;
 	line-height: 100%;
 	color: black;
+	animation-duration: 4s;
+    animation-name: text;
 }
 
 .sighting {
@@ -15,5 +17,34 @@ p {
 	margin-bottom: 10px;
 	border: 2px solid black;
 	border-radius: 7px;
+	animation-duration: 0.2s;
+    animation-name: slidein;
 	
+}
+
+
+
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 0%; 
+  }
+
+  to {
+    margin-right: 100%;
+    width: 100%;
+    
+  }
+}
+
+@keyframes text {
+  from {
+   
+    opacity: 0.0;
+  }
+
+  to {
+    opacity: 1.0;
+  }
 }
