@@ -17,14 +17,10 @@
         <input type="text" class="form-control" name="description" ngModel required>
       </div>
       
-      <div class="form-group">
+      <div class="form-group" >
         <label for="species">Species</label>
         <select class="form-control" name="species" ngModel required>
-        	<option value="mallard">mallard</option>
-        	<option value="redhead">redhead</option>
-        	<option value="gadwall">gadwall</option>
-        	<option value="canvasback">canvasback</option>
-        	<option value="lesser scaup">lesser scaup</option>
+        	<option *ngFor="let result of allowedSpecies" value="{{result}}">{{result}}</option>
         </select>
       </div>
       

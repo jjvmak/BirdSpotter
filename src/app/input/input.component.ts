@@ -17,12 +17,23 @@ export class InputComponent implements OnInit {
   count: number;
   
   form;
+  ln: number;
+  allowedSpecies: string[] = [];
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
 
-    
+    this.http.get<SpeciesData>('http://localhost:8020/species', {observe: 'response'})
+      .subscribe(resp => {
+         this.ln = Object.keys(resp.body).length;
+        
+          for (let i = 0; i < this.ln; i++) {
+            this.allowedSpecies.push(resp.body[i].name);
+            console.log(resp.body[i].name);
+          }
+        
+      });
    
   }
   
@@ -45,5 +56,9 @@ export class InputComponent implements OnInit {
     this.sightingForm.reset();
   }
   
+}
+
+interface SpeciesData {
+  name;
 }
 
