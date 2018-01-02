@@ -1,4 +1,7 @@
 # BirdSpotter
+Vincit Koodarijahti ennakkotehtävä.
+
+HUOM. sovellus käyttää porttia 8020.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
 
